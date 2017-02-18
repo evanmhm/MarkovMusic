@@ -11,9 +11,10 @@ class MarkovMusic:
         self.args = args
 
     def run(self):
-        print loadMidi.load('midi/test.mid')
+        for note in loadMidi.load('midi/test.mid'):
+            print note.val, note.len, note.pos
         print
-        print loadMidi.load('midi/bach.mid')
+        # print loadMidi.load('midi/bach.mid')
 
         # mc = MarkovChain(10)
         # mc.add_file('book.txt')
