@@ -2,7 +2,7 @@
 
 import src.markov as markov
 from markov import MarkovChain
-import loadMIDI
+import midi
 
 from . import args
 
@@ -11,9 +11,8 @@ class MarkovMusic:
         self.args = args
 
     def run(self):
-        loadMIDI.testWrite()
         mc = MarkovChain(10)
-        mc.add_file('bible.txt')
+        mc.add_file('book.txt')
         while (True):
             str = raw_input('\npress enter to generate new text')
             print str
