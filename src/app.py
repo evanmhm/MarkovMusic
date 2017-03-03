@@ -7,17 +7,19 @@ import writeMidi
 
 from . import args
 
+
 class MarkovMusic:
+
     def __init__(self):
         self.args = args
 
     def run(self):
-        fileload, resolution = loadMidi.load('midi/test.mid')
+        fileload, resolution, format = loadMidi.load('midi/test.mid')
         print fileload
         for note in fileload:
             print note.val, note.len, note.pos
 
-        writeMidi.writeList(fileload, resolution)
+        writeMidi.writeList(fileload, resolution, format)
 
         # print loadMidi.load('midi/bach.mid')
 
