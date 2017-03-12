@@ -5,16 +5,21 @@ from customNote import CustomNote
 def load(path):
     midifile = midi.read_midifile(path)
     noteEvents = []
-    print midifile
+    #print midifile
     if midifile.format:  # format=1: only MidiOn events
-        print midi.read_midifile(path)[1]
+        print midi.read_midifile(path)
         for event in midi.read_midifile(path)[1]:
-            if (type(event) == midi.events.NoteOnEvent or type(event) == midi.events.NoteOffEvent):
+            if (type(event) == midi.events.NoteOnEvent and event.data[1] >= 1):
                 noteEvents.append(event)
+            if (type(event) == midi.events.NoteOnEvent and event.data[1] == 0):
+                noteEvents.append(midi.NoteOffEvent(tick=event.tick, pitch=event.data[0]))
     else:
+
         for event in midi.read_midifile(path)[0]:
-            if (type(event) == midi.events.NoteOnEvent or type(event) == midi.events.NoteOffEvent):
+            if ((type(event) == midi.events.NoteOnEvent and event.data[1] >= 1 )or type(event) == midi.events.NoteOffEvent):
                 noteEvents.append(event)
+            if (type(event) == midi.events.NoteOnEvent and event.data[1] == 0):
+                noteEvents.append(midi.NoteOffEvent(tick=event.tick, pitch=event.data[0]))
 
     return extractNotes(noteEvents, midifile.format), midifile.resolution, midifile.format
 

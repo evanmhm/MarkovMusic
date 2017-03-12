@@ -23,7 +23,6 @@ def writeList(customList, res, format):
     else:
         for note in customList:
             if (note.pos < prevPos + prevLen):
-                print "ahhh"
                 on = midi.NoteOnEvent(tick=note.pos - prevPos, velocity=note.vel, pitch=note.val)
                 multinoteIndex += 1
                 track.insert(len(track) - multinoteIndex, on)

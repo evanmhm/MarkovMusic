@@ -4,6 +4,7 @@ import src.markov as markov
 from markov import MarkovChain
 import loadMidi
 import writeMidi
+import convert
 
 from . import args
 
@@ -15,7 +16,7 @@ class MarkovMusic:
 
     def run(self):
         fileload, resolution, format = loadMidi.load('midi/test.mid')
-        print fileload
+        #print fileload
         for note in fileload:
             print note.val, note.len, note.pos
 
