@@ -15,17 +15,20 @@ class MarkovMusic:
         self.args = args
 
     def run(self):
-        fileload, resolution, format = loadMidi.load('midi/test.mid')
-        #print fileload
+        fileload, resolution, format = loadMidi.load('midi/bach_simple.mid')
+        # print fileload
         for note in fileload:
             print note.val, note.len, note.pos
 
-        writeMidi.writeList(fileload, resolution, format)
+        stringNotes = convert.listToString(fileload)
 
-        # print loadMidi.load('midi/bach.mid')
+        mc = MarkovChain(1)
+        mc.add_string(stringNotes)
+        markovNotes = ' '.join(mc.generate_text(50))
+        print stringNotes
+        print mc.generate_text()
+        writeMidi.writeList(convert.stringToList(markovNotes), resolution, format)
 
-        # mc = MarkovChain(10)
-        # mc.add_file('book.txt')
         # while (True):
         #     str = raw_input('\npress enter to generate new text')
         #     print str

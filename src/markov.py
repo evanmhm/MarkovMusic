@@ -9,7 +9,7 @@ class MarkovChain:
   def __init__(self, key_words=2):
     self.key_words = key_words
     self.lookup_dict = defaultdict(list)
-    self._punctuation_regex = re.compile('[,.!;\?\:\-\[\]\n]+')
+    self._punctuation_regex = re.compile('[.!;\?\:\-\[\]\n]+')
     self._seeded = False
     self.__seed_me()
 
