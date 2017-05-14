@@ -14,7 +14,6 @@ def writeList(customList, res, format):
     multinoteIndex = 0
     if (format):
         for note in customList:
-            # TODO NOT WORKING USE SOMETHING THATS NOT 0
             on = midi.NoteOnEvent(tick=0, velocity=note.vel, pitch=note.val)
             track.append(on)
             # Instantiate a MIDI note off event, append it to the track
