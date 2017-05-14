@@ -1,5 +1,4 @@
-import re
-import random
+import re, random
 from collections import defaultdict, deque
 
 #base markov chain from https://github.com/Codecademy/markov_python

@@ -43,7 +43,6 @@ def writeList(customList, res, format):
     # Add the end of track event, append it to the track
     eot = midi.EndOfTrackEvent(tick=1)
     track.append(eot)
-    # Print out the pattern
-    print pattern
+
     # Save the pattern to disk
     midi.write_midifile("rebuilt.mid", pattern)
